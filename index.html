@@ -14,81 +14,116 @@
     <link rel="stylesheet" href="./assets/css/header.css">
     <link rel="stylesheet" href="./assets/css/nav.css">
     <link rel="stylesheet" href="./assets/css/entry.css">
-    <title>Mi Blog</title>
+    <title>My Blog</title>
 </head>
 
 <body>
     <header>
-        <h1>Mi Blog</h1>
+        <h1>My Blog</h1>
         <hr>
         <img src="./assets/images/background.jpg" alt=" developer background image" height="500px">
     </header>
     <nav class="navbar-fixed">
-        <a href="index.html">Inicio</a>
-        <a href="about.html">Acerca de</a>
-        <a href="contact.html">Contacto</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </nav>
-    <main class="container">
-        <article class="card">
-            <h2>Titulo de la entrada</h2>
-            <span>Fecha de publicacion</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit. Ea
-                quibusdam adipisci et sit ad nisi aut, deserunt at molestiae beatae error cupiditate? Rerum, facilis
-                cumque!
-            </p>
-            <a href="#">Leer mas</a>
-        </article>
-        <article class="even card">
-            <h2>Titulo de la entrada</h2>
-            <span>Fecha de publicacion</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit. Ea
-                quibusdam adipisci et sit ad nisi aut, deserunt at molestiae beatae error cupiditate? Rerum, facilis
-                cumque!
-            </p>
-            <a href="#">Leer mas</a>
-        </article>
-        <article class="card">
-            <h2>Titulo de la entrada</h2>
-            <span>Fecha de publicacion</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit. Ea
-                quibusdam adipisci et sit ad nisi aut, deserunt at molestiae beatae error cupiditate? Rerum, facilis
-                cumque!
-            </p>
-            <a href="#">Leer mas</a>
-        </article>
-        <article class="even card">
-            <h2>Titulo de la entrada</h2>
-            <span>Fecha de publicacion</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit. Ea
-                quibusdam adipisci et sit ad nisi aut, deserunt at molestiae beatae error cupiditate? Rerum, facilis
-                cumque!
-            </p>
-            <a href="#">Leer mas</a>
-        </article>
-        <article class="card">
-            <h2>Titulo de la entrada</h2>
-            <span>Fecha de publicacion</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit. Ea
-                quibusdam adipisci et sit ad nisi aut, deserunt at molestiae beatae error cupiditate? Rerum, facilis
-                cumque!
-            </p>
-            <a href="#">Leer mas</a>
-        </article>
-        <article class="even card">
-            <h2>Titulo de la entrada</h2>
-            <span>Fecha de publicacion</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit. Ea
-                quibusdam adipisci et sit ad nisi aut, deserunt at molestiae beatae error cupiditate? Rerum, facilis
-                cumque!
-            </p>
-            <a href="#">Leer mas</a>
-        </article>
-    </main>
+    <main class="container"></main>
 
     <footer>
         <small>Developed and designed by Manuel Bermúdez. &copy;2023. All rights reserved.</small>
     </footer>
 
+    <script>
+        // Generate an array of entries with dynamically created data
+        const entriesData = Array.from({ length: 10 }, (_, index) => ({
+            id: index + 1,
+            title: `Entry Title ${index + 1}`,
+            date: "Publication Date 1",
+            content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit...",
+            readMoreLink: "#"
+        }));
+
+        const idToContentMap = {};
+
+        // Generate content mappings dynamically
+        for (let i = 1; i <= entriesData.length; i++) {
+            let proyects = 6;
+
+            if (i <= proyects) {
+                idToContentMap[i] = {
+                    title: `Proyect ${i}`,
+                    date: "Publication Date 1",
+                    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit...",
+                    readMoreLink: "#"
+                };
+            } else {
+                idToContentMap[i] = {
+                    title: `Entry Title ${i}`,
+                    date: "Publication Date 1",
+                    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam consequuntur labore suscipit...",
+                    readMoreLink: "#"
+                };
+            }
+
+        }
+
+
+        // Get the container element from the HTML
+        const container = document.querySelector(".container");
+
+        // Function to create an HTML element for an entry
+        function createEntryElement(entry) {
+            const article = document.createElement("article");
+            article.className = "card";
+            article.setAttribute("data-id", entry.id);
+
+            article.innerHTML = `
+                <h2>${entry.title}</h2>
+                <span>${entry.date}</span>
+                <p>${entry.content}</p>
+                <a href="${entry.readMoreLink}">Read more</a>
+            `;
+
+            return article;
+        }
+
+        // Function to append entries to the container with alternating styles
+        function appendEntriesToContainer(entries) {
+            entries.forEach(entry => {
+                const article = createEntryElement(entry);
+                container.appendChild(article);
+            });
+        }
+
+        // Update card content based on the ID
+        // Function to update card content based on the ID
+        function updateCardContent(id) {
+            const card = document.querySelector(`[data-id="${id}"]`);
+            if (card) {
+                const newContent = idToContentMap[id];
+                card.innerHTML = `
+            <h2>${newContent.title}</h2>
+            <span>${newContent.date}</span>
+            <p>${newContent.content}</p>
+            <a href="${newContent.readMoreLink}">Read more</a>
+        `;
+            }
+        }
+
+
+        // Call the function to append entries to the container
+        appendEntriesToContainer(entriesData);
+
+        // Call the function to update the content of the cards with a loop depending on the number of cards (replace with the desired ID)
+
+        for (let i = 1; i <= entriesData.length; i++) {
+            updateCardContent(i);
+            //comprobemos i
+            console.log(i);
+        }
+
+    </script>
 </body>
 
 </html>
