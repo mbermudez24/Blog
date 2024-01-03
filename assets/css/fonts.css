@@ -1,0 +1,34 @@
+/* Las fuentes */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gray);
+    font-size: 0.875rem;
+    /* 14px */
+}
+
+header,
+nav,
+footer {
+    text-align: center;
+}
+
+.preserve {
+    white-space: pre;
+}
+
+/*Las secciones pares y el footer tienen letra color blanco*/
+header,
+footer,
+article.even {
+    color: var(--white);
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h1 {
+    text-transform: uppercase;
+    margin: 0px;
+}

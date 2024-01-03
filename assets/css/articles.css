@@ -1,0 +1,32 @@
+/* Las secciones */
+
+html {
+    background: linear-gradient(var(--white), var(--white2));
+}
+
+header,
+nav,
+article.even {
+    background-color: var(--primary);
+}
+
+article {
+    padding: 1rem;
+}
+
+footer {
+    background: linear-gradient(var(--black), var(--black2));
+    padding: 1.5rem 0;
+}
+
+hr {
+    height: 0.1rem;
+    max-width: 100%;
+    border: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--white), rgba(0, 0, 0, 0));
+}
+
+main>article>hr {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--primary), rgba(0, 0, 0, 0));
+
+}

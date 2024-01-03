@@ -1,0 +1,28 @@
+/* Estilo del Texto */
+.container.about article p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Estilo de la Sección "Acerca de Mi Blog" */
+.container.about article {
+    background-color: #f5f5f5;
+    /* Cambia esto al color que desees */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Estilo de las Citas o Texto Emfatizado */
+.container.about article em {
+    color: #ff6600;
+    /* Cambia esto al color que desees */
+    font-style: italic;
+}
+
+/* Ajustes en el Contenedor Principal */
+.container.about {
+    text-align: justify;
+    /* Alinea el texto justificado */
+    margin: 20px;
+    /* Añade un margen alrededor del contenedor */
+}
